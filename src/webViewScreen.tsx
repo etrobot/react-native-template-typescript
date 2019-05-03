@@ -8,11 +8,11 @@ interface MyProps{
 }
 export default class MyWebComponent extends Component<NavigationScreenProps, {}>{
   public static navigationOptions = (nv:NavigationScreenProps) => ({
-    title: nv.navigation.getParam('code'),
+    title: nv.navigation.getParam('title'),
   });
   render() {
     const urlparam=this.props.navigation.getParam('code')
-    const url=`https://xueqiu.com/P/${urlparam}`
+    const url=`${urlparam}`
     console.log(url)
     return (
       <WebView 

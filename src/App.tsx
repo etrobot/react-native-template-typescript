@@ -6,33 +6,34 @@ import FlatListDemoPage from "./flist"
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation'
 import MyWebComponent from './webViewScreen'
+import Strategy from './strategy'
 
 const topnavi = createMaterialTopTabNavigator({
-  FlatListDemoPage: {
+  全部: {
     screen: FlatListDemoPage
   },
-  FontScreen: { screen: FlatListDemoPage },
-  SvgScreen: { screen: FlatListDemoPage },
+  A股: { screen: FlatListDemoPage },
+  港股: { screen: FlatListDemoPage },
 })
 
 const topstack = createStackNavigator(
   { topnavi, MyWebComponent }, {
     navigationOptions: {
-      tabBarLabel: '明日头条',
+      tabBarLabel: '资讯',
     },
     defaultNavigationOptions: {
-      title: '明日'
+      title: '资讯'
     },
     headerLayoutPreset: 'center'
   });
 
 const tab_b_stack = createStackNavigator(
-  { FlatListDemoPage }, {
+  { Strategy }, {
     navigationOptions: {
-      tabBarLabel: '今日',
+      tabBarLabel: '策略',
     },
     defaultNavigationOptions: {
-      title: '今日'
+      title: '策略'
     },
     headerLayoutPreset: 'center'
   });
