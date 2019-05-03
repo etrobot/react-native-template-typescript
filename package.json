@@ -1,30 +1,32 @@
 {
-  "name": "react-native-template-typescript",
+  "name": "AwesomeProject",
   "version": "0.0.1",
-  "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
+  "private": true,
   "scripts": {
-    "test": "standard setup.js",
-    "prepublishOnly": "npm --no-git-tag-version version $TRAVIS_TAG",
-    "install": "node setup.js"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emin93/react-native-template-typescript.git"
+  "dependencies": {
+    "react": "16.8.3",
+    "react-native": "0.59.5",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-webview": "^5.8.1",
+    "react-navigation": "^3.9.0"
   },
-  "keywords": [
-    "react-native",
-    "typescript",
-    "jest",
-    "template",
-    "boilerplate"
-  ],
-  "author": "Emin Khateeb <emin@emin.ch>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/emin93/react-native-template-typescript/issues"
-  },
-  "homepage": "https://github.com/emin93/react-native-template-typescript#readme",
   "devDependencies": {
-    "standard": "12.0.1"
+    "@babel/core": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.14",
+    "@types/react-native": "^0.57.50",
+    "@types/react-test-renderer": "^16.8.1",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "metro-react-native-babel-preset": "^0.53.1",
+    "react-test-renderer": "16.8.3",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
