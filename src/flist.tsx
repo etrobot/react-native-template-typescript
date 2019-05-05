@@ -53,8 +53,7 @@ export default class FlatListDemoPage extends React.Component<NavigationScreenPr
     const url = `https://interface.sina.cn/wap_api/layout_col.d.json?showcid=76524&col=76524&level=&show_num=50&page=${page}&act=more`;
     console.log(url)
     try {
-      const response = await fetch(url);
-      const respdata = await response.json();
+      const respdata = await fetch(url).then(response => response.json());
       const mydata=respdata.result.data.list
       // console.log(mydata)
       this.setState(
@@ -80,7 +79,7 @@ export default class FlatListDemoPage extends React.Component<NavigationScreenPr
         padding:20
       }}
     >
-    <TouchableOpacity onPress={() => this.props.navigation.navigate('MyWebComponent', { code: item.pc_url,title:'资讯内容' })}>
+    <TouchableOpacity onPress={() => this.props.navigation.navigate('MyWebComponent', { code: item.pc_url,title:'资讯正文' })}>
       <View style={{ justifyContent: 'center', marginLeft: 5 }}>
         <Text>{`【${item.source}】${item.stitle}`}</Text>
         <Text>{item.cTime}</Text>

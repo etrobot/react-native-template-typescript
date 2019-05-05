@@ -5,6 +5,7 @@ import FlatListDemoPage from "./flist"
 
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation'
+import { NavigationScreenProps } from 'react-navigation'
 import MyWebComponent from './webViewScreen'
 import Strategy from './strategy'
 
@@ -16,8 +17,8 @@ const topnavi = createMaterialTopTabNavigator({
   港股: { screen: FlatListDemoPage },
 })
 
-const topstack = createStackNavigator(
-  { topnavi, MyWebComponent }, {
+const tab_a_stack = createStackNavigator(
+  { topnavi}, {
     navigationOptions: {
       tabBarLabel: '资讯',
     },
@@ -41,9 +42,20 @@ const tab_b_stack = createStackNavigator(
 
 const TabsAB = createBottomTabNavigator({
   // Tab_A: { screen: topnavi, navigationOptions: { tabBarLabel: '明日' }},
-  topstack,
+  tab_a_stack,
   tab_b_stack
 })
 
-
-export default createAppContainer(TabsAB)
+const topStack=createStackNavigator({
+  TabsAB:{
+    screen:TabsAB,
+    navigationOptions: ({ navigation }:NavigationScreenProps) => ({
+      header:null,
+      title: navigation.state.routeName,
+    }),
+  },
+  MyWebComponent
+},{
+  headerLayoutPreset:'center'
+})
+export default createAppContainer(topStack)
