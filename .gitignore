@@ -1,3 +1,5 @@
+.vscode
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj
