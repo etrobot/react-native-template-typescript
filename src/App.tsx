@@ -1,3 +1,4 @@
+import React from 'react';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation'
 
@@ -8,6 +9,7 @@ import { createStackNavigator } from 'react-navigation'
 import { NavigationScreenProps } from 'react-navigation'
 import MyWebComponent from './webViewScreen'
 import Strategy from './strategy'
+import {themeState,ThemeContext} from './context'
 
 const topnavi = createMaterialTopTabNavigator({
   全部: {
@@ -58,4 +60,28 @@ const topStack=createStackNavigator({
 },{
   headerLayoutPreset:'center'
 })
-export default createAppContainer(topStack)
+
+const AppContainer = createAppContainer(topStack)
+export default class App extends React.Component<{},{theme:string}> {
+
+  state = {
+    theme: 'light'
+  };
+
+  toggleTheme = () => {
+    this.setState(({ theme }) => ({
+      theme: theme === 'light' ? 'dark' : 'light',
+    }));
+    console.log(this.state.theme)
+  };
+
+  render() {
+    return (
+      <ThemeContext.Provider
+      value={{ theme: this.state.theme, toggleTheme: this.toggleTheme }}>
+      <AppContainer
+      />
+      </ThemeContext.Provider>
+    );
+  }
+}
