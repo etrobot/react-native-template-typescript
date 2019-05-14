@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { FlatList, NavigationScreenProps } from 'react-navigation';
 
-interface MyProps { }
 interface MyState {
   time: number,
   loading: boolean,
@@ -13,8 +12,8 @@ interface MyState {
   refreshing: boolean
 }
 
-export default class FlatListDemoPage extends React.Component<NavigationScreenProps & MyProps, MyState>{
-  constructor(props: NavigationScreenProps & MyProps) {
+export default class FlatListDemoPage extends React.Component<NavigationScreenProps, MyState>{
+  constructor(props: NavigationScreenProps) {
     super(props);
     this.state = {
       time: new Date().getTime(),

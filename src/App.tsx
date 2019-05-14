@@ -91,8 +91,7 @@ export default class App extends React.Component<nvScrPropsex,iState>{
          toggleTheme:this.toggleTheme
         }
       }>
-      <AppContainer
-      />
+      <AppContainer/>
       </ThemeContext.Provider>
     );
   }
