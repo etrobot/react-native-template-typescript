@@ -1,34 +1,38 @@
 import React, { Component, } from 'react';
 import { ActivityIndicator,Button,View, ViewStyle,TouchableOpacity,Text} from 'react-native';
 import { WebView } from 'react-native-webview';
-// import { NavigationScreenProps} from 'react-navigation'
+import { NavigationScreenProps} from 'react-navigation'
 import {withAppContext,nvScrPropsex,ThemeConstants,ThemeContext} from './context'
 
-export default class MyWebComponent extends Component<nvScrPropsex, {}>{
-  public static navigationOptions = (nv:nvScrPropsex) => ({
+export default class MyWebComponent extends Component<NavigationScreenProps, {}>{
+  public static navigationOptions = (nv:NavigationScreenProps) => ({
     title: nv.navigation.getParam('title'),
-    // headerStyle: {
-    //   backgroundColor: ThemeConstants[nv.theme].backgroundColor,
-    //   borderBottomColor: ThemeConstants[nv.theme].borderColor,
-    // }
+    headerRight: (
+      <ThemeContext.Consumer>
+      {passContext => passContext && (
+      <Button
+        onPress={passContext.toggleTheme}
+        title={passContext.theme}
+      />)}
+      </ThemeContext.Consumer>
+    )
   });
-  
+
+  state = {
+    count: 0,
+  };
+
   render() {
     const urlparam=this.props.navigation.getParam('code')
     const url=`${urlparam}`
-    console.log(url)
+    // console.log(url)
     return (
-      <ThemeContext.Consumer>
-      {passContext => passContext && (
         <WebView 
         source={{ uri:url }}
         javaScriptEnabled={true}
         renderLoading={ ()=>{return (<ActivityIndicator/>)}} 
         startInLoadingState={true}
        />
-
-        )}
-       </ThemeContext.Consumer>
     );
   }
 }

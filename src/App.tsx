@@ -77,21 +77,22 @@ export default class App extends React.Component<nvScrPropsex,iState>{
   } 
 
   toggleTheme = () => {
-    this.setState(({ theme }:{theme:string}) => ({
-      theme: theme === 'light' ? 'dark' : 'light',
-    }));
-    console.log(this.state.theme)
+    this.setState(({ theme }:{theme:string}) => {
+      let result={
+        theme: theme === 'light' ? 'dark' : 'light',
+        }
+      console.log(result.theme);
+      return result;
+    });
   };
 
   render() {
+    const context = this.state;
     return (
       <ThemeContext.Provider
-      value={{
-          theme: 'light',
-         toggleTheme:this.toggleTheme
-        }
-      }>
-      <AppContainer/>
+      value={context}>
+      <AppContainer
+      />
       </ThemeContext.Provider>
     );
   }
