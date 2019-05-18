@@ -18,8 +18,16 @@ export default class MyWebComponent extends Component<NavigationScreenProps, {}>
     )
   });
 
+  componentDidMount() {
+    this.props.navigation.setParams({ increaseCount: this._increaseCount });
+  }
+
   state = {
     count: 0,
+  };
+
+  _increaseCount = () => {
+    console.log('xxx')
   };
 
   render() {

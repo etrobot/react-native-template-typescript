@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { FlatList, NavigationScreenProps } from 'react-navigation';
+import {withAppContext,nvScrPropsex,ThemeConstants,ThemeContext} from './context'
 
 interface MyState {
   time: number,
@@ -78,12 +79,19 @@ export default class FlatListDemoPage extends React.Component<NavigationScreenPr
         padding:20
       }}
     >
-    <TouchableOpacity onPress={() => this.props.navigation.navigate('MyWebComponent', { code: item.pc_url,title:'资讯正文' })}>
+     <ThemeContext.Consumer>
+      {passContext => passContext && (
+    <TouchableOpacity onPress={() => {
+      passContext.logScr(item.pc_url);
+      this.props.navigation.navigate('MyWebComponent', { code: item.pc_url,title:'资讯正文' })}
+    }>
       <View style={{ justifyContent: 'center', marginLeft: 5 }}>
         <Text>{`【${item.source}】${item.stitle}`}</Text>
         <Text>{item.cTime}</Text>
       </View>
      </TouchableOpacity>
+     )}
+     </ThemeContext.Consumer>
     </View>
   );
 

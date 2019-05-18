@@ -2,8 +2,10 @@ import React from 'react';
 import { NavigationScreenProps } from 'react-navigation'
 
 export interface iState{
+    routeName:string,
     theme: string,
-    toggleTheme:()=>void
+    toggleTheme:()=>void,
+    logScr:(routeName:string)=>void
 }
 
 export interface nvScrPropsex extends NavigationScreenProps {
