@@ -124,8 +124,8 @@ export default class App extends React.Component<nvScrPropsex,iState>{
       await AsyncStorage.removeItem(this.state.routeName);
       ifFavored='关注'
     }else{
-      await AsyncStorage.setItem(this.state.routeName,ifFavored);
       ifFavored='取关'
+      await AsyncStorage.setItem(this.state.routeName,ifFavored);
     }
     this.setState(({ theme }:{theme:string}) => {
       let result={
